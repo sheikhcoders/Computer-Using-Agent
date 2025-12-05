@@ -1,181 +1,284 @@
 # Computer-Using Agent (CUA)
 
-A **Computer-Using Agent** is an AI model designed to interact with graphical user interfaces (GUIs) by perceiving screen content, reasoning about tasks, and performing actions such as clicking, typing, and scrolling—all through natural language instructions.
+A **general-purpose AI agent** capable of completing complex, long-horizon tasks. Powered by a multi-agent system with specialized agents for code, research, presentations, and multimedia processing.
 
-![Computer-Using Agent](https://img.shields.io/badge/AI-Powered-blue)
+![Computer-Using Agent](https://img.shields.io/badge/AI-Multi--Agent-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Free Models](https://img.shields.io/badge/models-100%25%20Free-brightgreen)
+![AI SDK](https://img.shields.io/badge/AI%20SDK-v4-purple)
 
-## What is a Computer-Using Agent?
+## 🎯 Overview
 
-CUA combines vision capabilities with advanced reasoning, enabling it to navigate and operate digital environments like humans do, without relying on specific APIs or scripts. This allows the agent to perform multi-step tasks across various applications, including:
+CUA is a sophisticated multi-agent system that:
+- **Decomposes** complex tasks into manageable sub-tasks
+- **Routes** work to specialized expert agents
+- **Coordinates** execution with dependency management
+- **Aggregates** results into cohesive outputs
 
-- 🌐 **Web browsers** - Navigate websites, fill forms, extract data
-- 🖥️ **Desktop software** - Interact with any application
-- 📟 **Legacy systems** - Work with interfaces that lack APIs
+## 🚀 Agent Capabilities
 
-### How CUA Works
+| Agent | Capabilities |
+|-------|-------------|
+| **Code Agent** | Full-stack web apps, Auth, Database, Stripe, E2E Testing |
+| **Research Agent** | Web search, Deep analysis, Browser automation, Charts |
+| **PPT Agent** | Beautiful presentations, Flexible layouts, PPTX export |
+| **Multimodal Agent** | Image/Audio/Video input, Generation, OCR |
 
-CUA operates through an iterative loop:
+### 💻 Code Agent
 
-1. **Perception** - Captures screenshots and understands the current UI state
-2. **Reasoning** - Uses chain-of-thought planning to determine next steps
-3. **Action** - Executes actions via simulated mouse and keyboard inputs
+```
+✅ Full-Stack Development
+   - Next.js, React, Vue, APIs
+   - Server Actions, tRPC, REST
 
-This approach enables:
-- ✅ **Adaptability** - Self-corrects when things don't go as planned
-- ✅ **Resilience** - Handles UI changes that break traditional automation
-- ✅ **Robustness** - More reliable than RPA tools that fail when interfaces shift
+✅ Authentication
+   - NextAuth.js, Clerk, Auth0
+   - OAuth, JWT, RBAC
 
-## Features
+✅ Database
+   - Prisma, PostgreSQL, MongoDB
+   - Migrations, Relations
 
-- **🆓 100% Free Models** - Uses free tiers from Groq and Google Gemini
-- **⚡ Lightning Fast** - Powered by Groq's ultra-fast inference engine
-- **🎨 Beautiful UI** - Modern design with dark mode support
-- **♿ Fully Accessible** - WAI-ARIA compliant with full keyboard support
-- **🔄 Multiple Models** - Switch between Llama, Gemma, Mixtral, and Gemini
-- **📱 Mobile Friendly** - Responsive design with proper touch targets
+✅ Payments
+   - Stripe Checkout
+   - Subscriptions, Webhooks
 
-## Available Free Models
+✅ Testing
+   - Playwright E2E
+   - Jest, React Testing Library
+```
 
-### Groq (Fast Inference)
-| Model | Context | Best For |
-|-------|---------|----------|
-| Llama 3.3 70B | 128K | General tasks, coding, reasoning |
-| Gemma 2 9B | 8K | Quick responses, structured output |
-| Mixtral 8x7B | 32K | Multilingual, long conversations |
-| Llama 3.1 8B | 128K | Fastest responses |
+### 🔬 Research Agent
 
-### Google Gemini
-| Model | Context | Best For |
-|-------|---------|----------|
-| Gemini 2.5 Flash | 1M | Multimodal, Google Search, reasoning |
-| Gemini 1.5 Flash | 1M | Vision, long documents |
-| Gemini 1.5 Flash 8B | 1M | Lightweight, fast |
+```
+✅ Comprehensive Research
+   - Multi-source search
+   - API integration
+   - Browser automation
 
-## Quick Start
+✅ In-Depth Analysis
+   - Data analysis with code
+   - Chart generation
+   - Report compilation
+```
+
+### 📊 PPT Agent
+
+```
+✅ Aesthetics
+   - Flexible layouts (not just templates)
+   - Professional design
+   - Data visualizations
+
+✅ Export Quality
+   - High-fidelity PPTX
+   - HTML to PowerPoint
+   - Animations support
+```
+
+### 🎨 Multimodal Agent
+
+```
+✅ Input
+   - Long-text files
+   - Video, Audio, Images
+   - OCR and document processing
+
+✅ Output
+   - Image generation
+   - Audio synthesis (TTS)
+   - Video analysis
+```
+
+## 🔌 MCP Ecosystem
+
+### Pre-built MCPs
+- **GitHub/GitLab** - Repository management, issues, PRs
+- **Slack** - Messaging and notifications
+- **Google Maps** - Places search, directions
+- **Figma** - Design file access, components
+
+### Custom MCPs
+Create any custom MCP from scratch or by wrapping existing tools:
+
+```typescript
+import { createCustomMCP } from "@/lib/mcp";
+
+createCustomMCP(
+  "my-api",
+  "My Custom API",
+  "Access my custom service",
+  [
+    {
+      name: "my_tool",
+      description: "Does something useful",
+      inputSchema: { /* JSON Schema */ }
+    }
+  ]
+);
+```
+
+## 🏗️ Architecture
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    User Request                          │
+└─────────────────────┬───────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────┐
+│                   Orchestrator                           │
+│  • Task Analysis    • Decomposition    • Coordination   │
+└─────────────────────┬───────────────────────────────────┘
+                      │
+        ┌─────────────┼─────────────┬─────────────┐
+        ▼             ▼             ▼             ▼
+┌───────────┐ ┌───────────┐ ┌───────────┐ ┌───────────┐
+│   Code    │ │ Research  │ │    PPT    │ │Multimodal │
+│   Agent   │ │   Agent   │ │   Agent   │ │   Agent   │
+└─────┬─────┘ └─────┬─────┘ └─────┬─────┘ └─────┬─────┘
+      │             │             │             │
+      ▼             ▼             ▼             ▼
+┌─────────────────────────────────────────────────────────┐
+│                    Tools & MCPs                          │
+│  • Code Execution   • Web Search    • Image Gen         │
+│  • File Operations  • Browser Use   • Audio/Video       │
+│  • Testing          • Charts        • PPTX Export       │
+└─────────────────────────────────────────────────────────┘
+```
+
+## 🚀 Quick Start
 
 ### Prerequisites
 
-- Node.js 18+ ([download](https://nodejs.org/))
-- A free API key from [Groq](https://console.groq.com) and/or [Google AI Studio](https://aistudio.google.com/apikey)
+- Node.js 18+
+- API Keys (all FREE tiers):
+  - [Groq](https://console.groq.com) - Fast inference
+  - [Google AI Studio](https://aistudio.google.com/apikey) - Gemini
+  - [E2B](https://e2b.dev) - Code sandbox (optional)
 
 ### Installation
 
 ```bash
-# Clone the repository
+# Clone
 git clone https://github.com/sheikhcoders/Computer-Using-Agent.git
 cd Computer-Using-Agent
 
-# Install dependencies
+# Install
 npm install
 
-# Set up environment variables
+# Configure
 cp .env.example .env.local
-# Edit .env.local and add your API keys
+# Add your API keys to .env.local
 
-# Start the development server
+# Run
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to start chatting!
+### Pages
 
-## Environment Variables
+- **/** - Chat interface (Lightning/Pro modes)
+- **/agent** - Multi-agent task execution
 
-```env
-# Groq API Key (FREE - https://console.groq.com)
-GROQ_API_KEY=gsk_your_key_here
-
-# Google Gemini API Key (FREE - https://aistudio.google.com/apikey)
-GOOGLE_GENERATIVE_AI_API_KEY=your_key_here
-```
-
-## Tech Stack
-
-- **Framework**: [Next.js 15](https://nextjs.org/) with App Router
-- **AI SDK**: [Vercel AI SDK](https://ai-sdk.dev/) with provider registry
-- **UI Components**: [shadcn/ui](https://ui.shadcn.com/) + [Radix UI](https://radix-ui.com/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Icons**: [Lucide React](https://lucide.dev/) (SVG icons, never emoji)
-
-## Accessibility
-
-This project follows strict accessibility guidelines:
-
-- ✅ Full keyboard navigation (WAI-ARIA APG patterns)
-- ✅ Visible focus indicators
-- ✅ Minimum hit targets (24px desktop, 44px mobile)
-- ✅ Respects `prefers-reduced-motion`
-- ✅ Proper ARIA labels and roles
-- ✅ Skip to content link
-- ✅ Color contrast (APCA compliant)
-- ✅ Screen reader friendly
-
-## Project Structure
+## 📁 Project Structure
 
 ```
 src/
 ├── app/
-│   ├── api/chat/       # AI chat API route
-│   ├── layout.tsx      # Root layout with providers
-│   ├── page.tsx        # Home page
-│   └── globals.css     # Global styles & design tokens
+│   ├── api/
+│   │   ├── chat/route.ts      # Chat API (Lightning/Pro)
+│   │   └── agent/route.ts     # Multi-agent API (SSE)
+│   ├── agent/page.tsx         # Multi-agent UI
+│   └── page.tsx               # Chat UI
 ├── components/
-│   ├── chat/           # Chat UI components
-│   ├── layout/         # Header, footer
-│   ├── providers/      # Theme provider
-│   └── ui/             # shadcn/ui components
-├── hooks/              # Custom React hooks
+│   ├── agent/                 # Agent UI components
+│   ├── chat/                  # Chat components
+│   └── ui/                    # shadcn/ui
+├── hooks/
+│   └── use-agent.ts           # Agent state management
 └── lib/
-    ├── ai/             # AI provider registry & prompts
-    └── utils.ts        # Utility functions
+    ├── agents/
+    │   ├── types.ts           # Type definitions
+    │   ├── config.ts          # Agent configurations
+    │   ├── orchestrator.ts    # Task orchestration
+    │   ├── code-agent.ts      # Code specialist
+    │   ├── research-agent.ts  # Research specialist
+    │   ├── ppt-agent.ts       # Presentation specialist
+    │   └── multimodal-agent.ts# Multimodal specialist
+    ├── mcp/
+    │   └── index.ts           # MCP integration
+    ├── e2b/
+    │   └── sandbox.ts         # Code execution
+    └── ai/
+        ├── registry.ts        # AI provider registry
+        ├── modes.ts           # Lightning/Pro modes
+        └── prompts.ts         # System prompts
 ```
 
-## Scripts
+## 🔧 Environment Variables
 
-```bash
-npm run dev        # Start development server
-npm run build      # Build for production
-npm run start      # Start production server
-npm run lint       # Run ESLint
-npm run typecheck  # Run TypeScript checks
+```env
+# AI Models (Required - Both have FREE tiers)
+GROQ_API_KEY=gsk_...              # Groq Console
+GOOGLE_GENERATIVE_AI_API_KEY=...  # Google AI Studio
+
+# Code Execution (Optional - FREE tier)
+E2B_API_KEY=e2b_...               # E2B Dashboard
+
+# MCPs (Optional)
+GITHUB_TOKEN=ghp_...              # GitHub API
+SLACK_BOT_TOKEN=xoxb-...          # Slack API
 ```
 
-## Future Roadmap
+## 🛠️ Tech Stack
 
-- [ ] **Vision capabilities** - Screenshot analysis with multimodal models
-- [ ] **Action execution** - Simulated mouse/keyboard via browser automation
-- [ ] **Task memory** - Remember and replay multi-step workflows
-- [ ] **Tool calling** - Integration with external APIs and services
-- [ ] **Voice input** - Whisper-powered voice commands
+| Category | Technology |
+|----------|------------|
+| Framework | Next.js 15 (App Router) |
+| AI SDK | Vercel AI SDK v4 |
+| Models | Groq (Llama, Gemma), Google (Gemini) |
+| Code Execution | E2B Sandboxed Runtime |
+| UI | shadcn/ui, Radix UI, Tailwind CSS |
+| Streaming | Server-Sent Events (SSE) |
+| Icons | Lucide React (SVG only) |
 
-## CUA vs Traditional Automation
+## ♿ Accessibility
 
-| Feature | CUA | RPA |
-|---------|-----|-----|
-| UI Changes | Adapts automatically | Breaks frequently |
-| Setup | Natural language | Complex scripting |
-| Learning | Self-improving | Static rules |
-| Flexibility | Any application | Specific integrations |
+Following strict WCAG 2.1 guidelines:
 
-## Contributing
+- ✅ Full keyboard navigation (WAI-ARIA APG)
+- ✅ Visible focus indicators
+- ✅ Minimum hit targets (24px desktop, 44px mobile)
+- ✅ `prefers-reduced-motion` support
+- ✅ Proper ARIA labels and roles
+- ✅ Skip to content link
+- ✅ Color contrast (APCA compliant)
 
-Contributions are welcome! Please follow these guidelines:
+## 🗺️ Roadmap
 
-1. Follow the accessibility requirements (MUST/SHOULD/NEVER rules)
-2. Use SVG icons only (never emoji as UI elements)
-3. Ensure keyboard navigation works
-4. Test with screen readers
-5. Honor `prefers-reduced-motion`
+- [ ] Vision capabilities (screenshot analysis)
+- [ ] E2B Desktop sandbox (full browser control)
+- [ ] Voice input (Whisper integration)
+- [ ] Multi-agent collaboration (parallel execution)
+- [ ] Task memory and replay
+- [ ] Custom agent creation
 
-## License
+## 🤝 Contributing
 
-MIT License - see [LICENSE](LICENSE) for details.
+1. Follow accessibility guidelines (MUST/SHOULD/NEVER)
+2. Use SVG icons only (never emoji in UI)
+3. Test keyboard navigation
+4. Ensure `prefers-reduced-motion` support
+5. Write tests for new features
 
-## Author
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE)
+
+## 👤 Author
 
 Built by [@sheikhcoders](https://github.com/sheikhcoders)
 
 ---
 
-**Note**: This project uses free API tiers. Please respect rate limits and usage policies of the AI providers.
+**Note**: This project uses free API tiers. Please respect rate limits and usage policies.
