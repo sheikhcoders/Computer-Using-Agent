@@ -1,10 +1,31 @@
-# Computer-Using Agent
+# Computer-Using Agent (CUA)
 
-An AI-powered assistant that uses **free** language models to help you with coding, writing, analysis, and more. Built with modern web technologies and full accessibility support.
+A **Computer-Using Agent** is an AI model designed to interact with graphical user interfaces (GUIs) by perceiving screen content, reasoning about tasks, and performing actions such as clicking, typing, and scrolling—all through natural language instructions.
 
 ![Computer-Using Agent](https://img.shields.io/badge/AI-Powered-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Free Models](https://img.shields.io/badge/models-100%25%20Free-brightgreen)
+
+## What is a Computer-Using Agent?
+
+CUA combines vision capabilities with advanced reasoning, enabling it to navigate and operate digital environments like humans do, without relying on specific APIs or scripts. This allows the agent to perform multi-step tasks across various applications, including:
+
+- 🌐 **Web browsers** - Navigate websites, fill forms, extract data
+- 🖥️ **Desktop software** - Interact with any application
+- 📟 **Legacy systems** - Work with interfaces that lack APIs
+
+### How CUA Works
+
+CUA operates through an iterative loop:
+
+1. **Perception** - Captures screenshots and understands the current UI state
+2. **Reasoning** - Uses chain-of-thought planning to determine next steps
+3. **Action** - Executes actions via simulated mouse and keyboard inputs
+
+This approach enables:
+- ✅ **Adaptability** - Self-corrects when things don't go as planned
+- ✅ **Resilience** - Handles UI changes that break traditional automation
+- ✅ **Robustness** - More reliable than RPA tools that fail when interfaces shift
 
 ## Features
 
@@ -119,6 +140,23 @@ npm run start      # Start production server
 npm run lint       # Run ESLint
 npm run typecheck  # Run TypeScript checks
 ```
+
+## Future Roadmap
+
+- [ ] **Vision capabilities** - Screenshot analysis with multimodal models
+- [ ] **Action execution** - Simulated mouse/keyboard via browser automation
+- [ ] **Task memory** - Remember and replay multi-step workflows
+- [ ] **Tool calling** - Integration with external APIs and services
+- [ ] **Voice input** - Whisper-powered voice commands
+
+## CUA vs Traditional Automation
+
+| Feature | CUA | RPA |
+|---------|-----|-----|
+| UI Changes | Adapts automatically | Breaks frequently |
+| Setup | Natural language | Complex scripting |
+| Learning | Self-improving | Static rules |
+| Flexibility | Any application | Specific integrations |
 
 ## Contributing
 
